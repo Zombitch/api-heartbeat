@@ -19,7 +19,7 @@ export class AppService {
 
     const observableResult = new Observable((subscriber) => {
       observableRequestList.subscribe({
-        next: value => console.log(value),
+        next: entry => dashboard[entry['id']] = this.buildDashboard(entry, jsonResponse, false),
         complete: () => subscriber.complete()
       })
     })
