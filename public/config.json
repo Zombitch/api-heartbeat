@@ -1,0 +1,19 @@
+{
+    "entries": [
+        {
+            "id": "DEV - Dom. Bancaire",
+            "url": "https://api-d01.d-apps.ocp4.krj.gie/dom-bancaires-front/v1/domiciliations-bancaires?ref-personne=KPEP00000027917240&si=PROSPECTION",
+            "method": "GET"
+        },
+        {
+            "id": "DEV - Dom. Bancaire - Détails",
+            "url": "https://api-d01.d-apps.ocp4.krj.gie/dom-bancaires-front/v1/domiciliations-bancaires/20041000010037150L02057",
+            "method": "GET"
+        },
+        {
+            "id": "DEV - Données Signalétique",
+            "url": "https://api-d01.d-apps.ocp4.krj.gie/donnees-signaletiques-front/v1/donnees-signaletiques?size=20&page=1&ref-personne=3005&si=RC-CTR",
+            "method": "GET"
+        }        
+    ]
+}
