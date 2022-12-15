@@ -8,15 +8,21 @@ import { throwError, forkJoin, Observable } from 'rxjs';
 export class AppService {
   constructor(private readonly httpService: HttpService) {}
 
-  check(config: {}){
-    const data = readFileSync(join(__dirname, '../public/'+config+'.json'));
-    const jsonData = data.toJSON();
+  check(config: string): Observable<{}>{
+    const data = readFileSync(join(__dirname, '../public/'+config+'.json')).toString('utf8');
+    const jsonData = JSON.parse(data);
+    console.log(jsonData)
     let dashboard = {};
     let promises = [];
 
-    const observableRequests: Observable<{}> = forkJoin(jsonData['entries'].map(entry => entry.method == 'GET' ? this.httpService.get(entry.url): throwError(() => "Verbe HTTP non géré")));
+    const observableRequestList: Observable<{}> = forkJoin(jsonData['entries'].map(entry => entry.method == 'GET' ? this.httpService.get(entry.url): throwError(() => "Verbe HTTP non géré")));
 
-    observableRequests.subscribe()
+    const observableResult = new Observable((subscriber) => {
+      observableRequestList.subscribe({
+        next: value => console.log(value),
+        complete: () => subscriber.complete()
+      })
+    })
 
     /*jsonData['entries'].forEach(entry => {
       const  getObservable = this.httpService.get(entry.url, {method:entry.method});//.catch(err => dashboard[entry.id] = this.buildDashboard(entry, err, false));
@@ -32,7 +38,7 @@ export class AppService {
       promises.push(toJsonPromise);
     });*/
 
-    return Promise.all(promises).then(data => dashboard);
+    return observableResult;
   }
 
   private buildDashboard(entry, result, succeed): {} {
