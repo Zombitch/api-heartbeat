@@ -1,7 +1,7 @@
 var selectedDetail = null;
 
 function getDashboardData(config){
-    return fetch("http://localhost:3000/"+config+"/heartbeat")
+    return fetch("http://localhost:3000/heartbeat/"+config)
         .then(fetchRes => fetchRes.json())
 }
 
