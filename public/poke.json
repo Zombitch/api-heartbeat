@@ -1,0 +1,19 @@
+{
+    "entries": [
+        {
+            "id": "Pokemon Ditto",
+            "url": "https://pokeapi.co/api/v2/pokemon/ditto",
+            "method": "GET"
+        },
+        {
+            "id": "Pokemon Dracaufeu",
+            "url": "https://pokeapi.co/api/v2/pokemon/charizard",
+            "method": "GET"
+        },
+        {
+            "id": "Pokemon - Pikachu",
+            "url": "https://pokeapi.co/api/v2/pokemon/pikachu",
+            "method": "GET"
+        }        
+    ]
+}

@@ -8,6 +8,9 @@ export class AppController {
   @Get()
   @Render('index')
   root(): {} {
-    return { message: this.appService.check('config')};
+    this.appService.check('config').subscribe(data => {
+      console.log(data);
+    })
+    return { message: 'lo'};
   }
 }
